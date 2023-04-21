@@ -24,7 +24,7 @@ class OnGenerateRoute {
       case PageConstant.arcane2:
         {
           return materialBuilder(
-            widget: const ImageGenerate(),
+            widget:  Container(),
           );
         }
 

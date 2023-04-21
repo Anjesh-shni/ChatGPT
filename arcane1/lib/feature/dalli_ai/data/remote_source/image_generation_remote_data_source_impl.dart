@@ -4,29 +4,29 @@ import '../../../../core/custom_exception.dart';
 import '../model/image_generation_model.dart';
 import 'image_generation_remote_data_source.dart';
 
-class ImageGenerationRemoteDataSourceImpl implements ImageGenerationRemoteDataSource{
-
+class ImageGenerationRemoteDataSourceImpl
+    implements ImageGenerationRemoteDataSource {
   final http.Client httpClient;
 
   ImageGenerationRemoteDataSourceImpl({required this.httpClient});
 
   @override
-  Future<ImageGenerationModel> getGenerateImages(String query)async {
+  Future<ImageGenerationModel> getGenerateImages(String query) async {
     const String _endPoint = "images/generations";
 
     // ['256x256', '512x512', '1024x1024']
     Map<String, dynamic> rowParams = {
-      "n":10,
-      "size":"256x256",
-      "prompt":query,
+      "n": 10,
+      "size": "256x256",
+      "prompt": query,
     };
 
     final encodedParams = json.encode(rowParams);
 
     final response = await httpClient.post(
-      Uri.parse(endPoint(_endPoint)),
+      Uri.parse((_endPoint)),
       body: encodedParams,
-      headers: headerBearerOption(OPEN_AI_KEY),
+      // headers: (OPEN_AI_KEY),
     );
 
     if (response.statusCode == 200) {
@@ -34,9 +34,5 @@ class ImageGenerationRemoteDataSourceImpl implements ImageGenerationRemoteDataSo
     } else {
       throw ServerException(message: "Image Generation Server Exception");
     }
-
-
-
   }
-
 }

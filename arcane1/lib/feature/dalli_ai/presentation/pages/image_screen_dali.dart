@@ -100,14 +100,14 @@ class _ImageGenerationPageState extends State<ImageGenerationPage> {
                         ));
                   },
                 )),
-            SearchTextFieldWidget(
-              textEditingController: _searchTextController,
-              onTap: () {
-                BlocProvider.of<ImageGenerationCubit>(context).imagesGenerate(
-                  query: _searchTextController.text,
-                ).then((value) => _clearTextField);
-              },
-            ),
+            // SearchTextFieldWidget(
+            //   textEditingController: _searchTextController,
+            //   onTap: () {
+            //     BlocProvider.of<ImageGenerationCubit>(context).imagesGenerate(
+            //       query: _searchTextController.text,
+            //     ).then((value) => _clearTextField);
+            //   },
+            // ),
             SizedBox(
               height: 20,
             ),
